@@ -1,0 +1,10 @@
+Servicios:
+EUREKA /Dependencias: eureka-server - spring web
+API-GATEWAY /Dependencias: spring web - eureka discovery client - gateway - resilience
+
+dependencia Gateway : sacarle el "-mvc"
+
+Microservicios: /Dependencias:spring web - eureka discovery client
+PRODUCT
+ORDER
+USER
