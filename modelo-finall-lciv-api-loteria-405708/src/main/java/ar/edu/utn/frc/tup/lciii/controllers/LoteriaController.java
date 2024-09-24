@@ -5,6 +5,7 @@ import ar.edu.utn.frc.tup.lciii.dtos.common.SaveApuestaDto;
 import ar.edu.utn.frc.tup.lciii.services.ApuestaService;
 import ar.edu.utn.frc.tup.lciii.services.SorteoService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +22,9 @@ public class LoteriaController {
     }
 
     @PostMapping("/apuestas")
-    public SaveApuestaDto registrarApuesta(ApuestaDto apuestaDto){
+    public SaveApuestaDto registrarApuesta(@RequestBody ApuestaDto apuestaDto){
         return apuestaService.save(apuestaDto);
     }
+
+
 }

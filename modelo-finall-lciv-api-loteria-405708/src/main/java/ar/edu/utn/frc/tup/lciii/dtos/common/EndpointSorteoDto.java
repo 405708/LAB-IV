@@ -1,14 +1,15 @@
 package ar.edu.utn.frc.tup.lciii.dtos.common;
 
-import ar.edu.utn.frc.tup.lciii.domains.NumeroSorteado;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Data
 public class EndpointSorteoDto {
-    private Integer id_sorteo;
-    private String fecha_sorteo;
-    private Integer totalEnReserva;
-    private List<NumeroSorteado> numerosSorteados;
+    private Integer numeroSorteo;
+    private String fecha;
+    private Integer dineroTotalAcumulado;
+    private List<List<Integer>> numerosSorteados = new ArrayList<>();
 }

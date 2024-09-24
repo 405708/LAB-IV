@@ -6,6 +6,7 @@ import lombok.Data;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Table(name = "sorteos")
@@ -27,7 +28,7 @@ public class Sorteo {
 
     //Campos a rellenar
     @Column
-    private Integer totalEnReserva;
+    private Integer dineroTotalAcumulado;
 
     @Column
     private Integer totalDeApuestas;
@@ -35,8 +36,7 @@ public class Sorteo {
     @Column
     private Integer totalPagado;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "numero_sorteado_id")
-    private List<NumeroSorteado> numerosSorteados;
+    @OneToMany(mappedBy = "sorteo", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<NumeroSorteado> numerosSorteados = new ArrayList<>(); // Cambiado a NumeroSorteado
 
 }
