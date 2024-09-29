@@ -14,7 +14,7 @@ public class Apuesta {
     private Long id;
 
     @Column
-    private String fecha_sorteo;
+    private String fechaSorteo;
 
     @Column
     private String id_cliente;
@@ -42,11 +42,11 @@ public class Apuesta {
     }
 
     public String getFecha_sorteo() {
-        return fecha_sorteo;
+        return fechaSorteo;
     }
 
     public void setFecha_sorteo(String fecha_sorteo) {
-        this.fecha_sorteo = fecha_sorteo;
+        this.fechaSorteo = fecha_sorteo;
     }
 
     public String getId_cliente() {

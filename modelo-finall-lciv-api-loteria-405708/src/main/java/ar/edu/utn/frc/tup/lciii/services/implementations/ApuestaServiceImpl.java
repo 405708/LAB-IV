@@ -6,7 +6,6 @@ import ar.edu.utn.frc.tup.lciii.dtos.common.ApuestaDto;
 import ar.edu.utn.frc.tup.lciii.dtos.common.EndpointSorteoDto;
 import ar.edu.utn.frc.tup.lciii.dtos.common.SaveApuestaDto;
 import ar.edu.utn.frc.tup.lciii.repositories.ApuestaRepository;
-import ar.edu.utn.frc.tup.lciii.repositories.SorteoRepository;
 import ar.edu.utn.frc.tup.lciii.services.ApuestaService;
 import org.modelmapper.ModelMapper;
 import org.springframework.core.ParameterizedTypeReference;
@@ -23,13 +22,11 @@ import java.util.Set;
 public class ApuestaServiceImpl implements ApuestaService {
 
     private final ApuestaRepository apuestaRepository;
-    private final SorteoRepository sorteoRepository;
     private final ModelMapper modelMapper;
     RestTemplate restTemplate = new RestTemplate();
 
-    public ApuestaServiceImpl(ApuestaRepository apuestaRepository, SorteoRepository sorteoRepository , ModelMapper modelMapper) {
+    public ApuestaServiceImpl(ApuestaRepository apuestaRepository, ModelMapper modelMapper) {
         this.apuestaRepository = apuestaRepository;
-        this.sorteoRepository = sorteoRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -50,8 +47,11 @@ public class ApuestaServiceImpl implements ApuestaService {
         if (apuesta.getId_cliente() == null) {
             System.out.println("Error en el mapeo: id_cliente es null");
         }
-//        String url = "http://localhost:8082/sorteos?fecha=" + apuesta.getFecha_sorteo();
-        String url = "http://loteria:8080/sorteos?fecha=" + apuesta.getFecha_sorteo();
+        //Para uso normal
+        String url = "http://localhost:8082/sorteos?fecha=" + apuesta.getFecha_sorteo();
+
+//        Para el compose
+//        String url = "http://loteria:8080/sorteos?fecha=" + apuesta.getFecha_sorteo();
 
         String responseBody = restTemplate.getForObject(url, String.class);
         System.out.println("Respuesta cruda: " + responseBody);
