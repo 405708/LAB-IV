@@ -8,9 +8,6 @@ import ar.edu.utn.frc.tup.lciii.dtos.common.SaveApuestaDto;
 import ar.edu.utn.frc.tup.lciii.repositories.ApuestaRepository;
 import ar.edu.utn.frc.tup.lciii.repositories.SorteoRepository;
 import ar.edu.utn.frc.tup.lciii.services.ApuestaService;
-import ar.edu.utn.frc.tup.lciii.services.SorteoService;
-import jdk.swing.interop.SwingInterOpUtils;
-import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -20,7 +17,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 @Service
@@ -54,7 +50,9 @@ public class ApuestaServiceImpl implements ApuestaService {
         if (apuesta.getId_cliente() == null) {
             System.out.println("Error en el mapeo: id_cliente es null");
         }
-        String url = "http://localhost:8082/sorteos?fecha=" + apuesta.getFecha_sorteo();
+//        String url = "http://localhost:8082/sorteos?fecha=" + apuesta.getFecha_sorteo();
+        String url = "http://loteria:8080/sorteos?fecha=" + apuesta.getFecha_sorteo();
+
         String responseBody = restTemplate.getForObject(url, String.class);
         System.out.println("Respuesta cruda: " + responseBody);
         ResponseEntity<List<EndpointSorteoDto>> response = restTemplate.exchange(

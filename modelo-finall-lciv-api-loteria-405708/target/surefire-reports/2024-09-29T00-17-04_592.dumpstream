@@ -1,0 +1,5 @@
+# Created at 2024-09-29T00:17:04.889
+Boot Manifest-JAR contains absolute paths in classpath 'E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-405708\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+
