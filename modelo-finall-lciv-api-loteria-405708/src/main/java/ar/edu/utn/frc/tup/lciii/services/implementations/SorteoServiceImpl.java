@@ -8,6 +8,7 @@ import ar.edu.utn.frc.tup.lciii.dtos.common.SorteoTotalsDto;
 import ar.edu.utn.frc.tup.lciii.repositories.ApuestaRepository;
 import ar.edu.utn.frc.tup.lciii.services.SorteoService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -22,40 +25,29 @@ public class SorteoServiceImpl implements SorteoService {
 
     private final ApuestaRepository apuestaRepository;
     private final ModelMapper modelMapper;
-    RestTemplate restTemplate = new RestTemplate();
 
+    @Autowired
+    private RestTemplate restTemplate;
+//    RestTemplate restTemplate = new RestTemplate();
+
+    @Autowired
     public SorteoServiceImpl(ApuestaRepository apuestaRepository, ModelMapper modelMapper) {
         this.apuestaRepository = apuestaRepository;
         this.modelMapper = modelMapper;
+
     }
 
     @Override
     public SorteoBetsDto getByIdWithBet(Integer id) {
 
-        String url = "http://localhost:8082/sorteos";
-//        String url = "http://loteria:8080/sorteos;"
-//        String responseBody = restTemplate.getForObject(url, String.class);
-//        System.out.println("Respuesta cruda: " + responseBody);
-
-        ResponseEntity<List<EndpointSorteoDto>> response = restTemplate.exchange(
-                url,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<EndpointSorteoDto>>() {}
-        );
-
-        List<EndpointSorteoDto>  sorteo =null;
-        if (response.getBody() != null) {
-            sorteo = response.getBody();
-        } else {
-            System.out.println("Error");
-        }
+        List<EndpointSorteoDto> sorteo = obtenerSorteos();
         EndpointSorteoDto sorteoElegido = new EndpointSorteoDto();
         for(EndpointSorteoDto sorteoDto : sorteo){
             if(sorteoDto.getNumeroSorteo().equals(id)){
                 sorteoElegido = sorteoDto;
             }
         }
+
         SorteoBetsDto sorteoToShow = new SorteoBetsDto();
         sorteoToShow.setId_sorteo(sorteoElegido.getNumeroSorteo());
         sorteoToShow.setFecha_sorteo(sorteoElegido.getFecha());
@@ -83,6 +75,20 @@ public class SorteoServiceImpl implements SorteoService {
         sorteoToShow.setApuestas(apuestasToAdd);
 
         return sorteoToShow;
+    }
+
+    @Override
+    public List<EndpointSorteoDto> obtenerSorteos() {
+        //Uso normal
+//        String url = "http://localhost:8082/sorteos";
+
+        //Uso Docker
+        String url = "http://loteria:8080/sorteos";
+        ResponseEntity<EndpointSorteoDto[]> response = restTemplate.getForEntity(url, EndpointSorteoDto[].class);
+        if (response.getBody() != null) {
+            return Arrays.asList(response.getBody());
+        }
+        return Collections.emptyList();
     }
 
     @Override

@@ -8,12 +8,14 @@ import ar.edu.utn.frc.tup.lciii.dtos.common.SaveApuestaDto;
 import ar.edu.utn.frc.tup.lciii.repositories.ApuestaRepository;
 import ar.edu.utn.frc.tup.lciii.services.ApuestaService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,7 +25,10 @@ public class ApuestaServiceImpl implements ApuestaService {
 
     private final ApuestaRepository apuestaRepository;
     private final ModelMapper modelMapper;
-    RestTemplate restTemplate = new RestTemplate();
+
+    @Autowired
+    private RestTemplate restTemplate;
+//    RestTemplate restTemplate = new RestTemplate();
 
     public ApuestaServiceImpl(ApuestaRepository apuestaRepository, ModelMapper modelMapper) {
         this.apuestaRepository = apuestaRepository;
@@ -47,31 +52,11 @@ public class ApuestaServiceImpl implements ApuestaService {
         if (apuesta.getId_cliente() == null) {
             System.out.println("Error en el mapeo: id_cliente es null");
         }
-        //Para uso normal
-        String url = "http://localhost:8082/sorteos?fecha=" + apuesta.getFecha_sorteo();
-
-//        Para el compose
-//        String url = "http://loteria:8080/sorteos?fecha=" + apuesta.getFecha_sorteo();
-
-        String responseBody = restTemplate.getForObject(url, String.class);
-        System.out.println("Respuesta cruda: " + responseBody);
-        ResponseEntity<List<EndpointSorteoDto>> response = restTemplate.exchange(
-                url,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<EndpointSorteoDto>>() {}
-        );
 
 
-        List<EndpointSorteoDto>  sorteo =null;
-        if (response.getBody() != null) {
-             sorteo = response.getBody();
-        } else {
-            System.out.println("Error");
-        }
+        EndpointSorteoDto sorteoElegido = obtenerSorteo(apuesta.getFecha_sorteo());
 
         Integer numeroApuesta = Integer.parseInt(apuesta.getNumero());
-        EndpointSorteoDto sorteoElegido = sorteo.get(0);
         System.out.println(sorteoElegido);
 
 //        Estimar pozo base de sorteo (10 pts)
@@ -142,6 +127,28 @@ public class ApuestaServiceImpl implements ApuestaService {
         SaveApuestaDto saved = modelMapper.map(apuesta, SaveApuestaDto.class);
         saved.setId_sorteo(sorteoElegido.getNumeroSorteo());
         return saved;
+    }
+
+    @Override
+    public EndpointSorteoDto obtenerSorteo(String fecha){
+        //        Para el compose
+        String url = "http://loteria:8080/sorteos?fecha=" + fecha;
+        //Para uso normal
+//        String url = "http://localhost:8082/sorteos?fecha=" + fecha;
+        ResponseEntity<EndpointSorteoDto[]> response = restTemplate.getForEntity(url, EndpointSorteoDto[].class);
+
+        EndpointSorteoDto[] sorteoObtenidos = response.getBody();
+
+        List<EndpointSorteoDto> sorteos = Arrays.stream(sorteoObtenidos).toList();
+
+        EndpointSorteoDto sorteoObtenido = new EndpointSorteoDto();
+
+        if (response.getBody() != null) {
+            sorteoObtenido = sorteos.get(0);
+        } else {
+            System.out.println("Error");
+        }
+        return sorteoObtenido;
     }
 
     public int contarCoincidencias(Integer numeroSorteado, Integer numeroApuesta) {

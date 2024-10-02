@@ -2,10 +2,9 @@ E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-4057
 E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-405708\src\main\java\ar\edu\utn\frc\tup\lciii\services\implementations\ApuestaServiceImpl.java
 E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-405708\src\main\java\ar\edu\utn\frc\tup\lciii\configs\SpringDocConfig.java
 E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-405708\src\main\java\ar\edu\utn\frc\tup\lciii\domains\Apuesta.java
-E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-405708\src\main\java\ar\edu\utn\frc\tup\lciii\domains\Sorteo.java
 E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-405708\src\main\java\ar\edu\utn\frc\tup\lciii\dtos\common\SorteoBetsDto.java
-E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-405708\src\main\java\ar\edu\utn\frc\tup\lciii\repositories\SorteoRepository.java
 E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-405708\src\main\java\ar\edu\utn\frc\tup\lciii\services\implementations\SorteoServiceImpl.java
+E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-405708\src\main\java\ar\edu\utn\frc\tup\lciii\configs\GeneralBeansConfig.java
 E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-405708\src\main\java\ar\edu\utn\frc\tup\lciii\controllers\LoteriaController.java
 E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-405708\src\main\java\ar\edu\utn\frc\tup\lciii\dtos\common\ApuestaSorteoDto.java
 E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-405708\src\main\java\ar\edu\utn\frc\tup\lciii\dtos\common\ErrorApi.java
@@ -17,6 +16,5 @@ E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-4057
 E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-405708\src\main\java\ar\edu\utn\frc\tup\lciii\dtos\common\SorteoTotalsDto.java
 E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-405708\src\main\java\ar\edu\utn\frc\tup\lciii\repositories\ApuestaRepository.java
 E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-405708\src\main\java\ar\edu\utn\frc\tup\lciii\controllers\PingController.java
-E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-405708\src\main\java\ar\edu\utn\frc\tup\lciii\domains\NumeroSorteado.java
 E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-405708\src\main\java\ar\edu\utn\frc\tup\lciii\services\ApuestaService.java
 E:\Users\Usuario\Desktop\Repositorios\LAB-IV\modelo-finall-lciv-api-loteria-405708\src\main\java\ar\edu\utn\frc\tup\lciii\dtos\common\EndpointSorteoDto.java
