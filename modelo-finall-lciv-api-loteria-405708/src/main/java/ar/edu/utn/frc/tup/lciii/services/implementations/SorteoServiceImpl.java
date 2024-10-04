@@ -40,6 +40,9 @@ public class SorteoServiceImpl implements SorteoService {
     @Override
     public SorteoBetsDto getByIdWithBet(Integer id) {
 
+        if(id == null){
+            return null;
+        }
         List<EndpointSorteoDto> sorteo = obtenerSorteos();
         EndpointSorteoDto sorteoElegido = new EndpointSorteoDto();
         for(EndpointSorteoDto sorteoDto : sorteo){
@@ -80,10 +83,10 @@ public class SorteoServiceImpl implements SorteoService {
     @Override
     public List<EndpointSorteoDto> obtenerSorteos() {
         //Uso normal
-//        String url = "http://localhost:8082/sorteos";
+        String url = "http://localhost:8082/sorteos";
 
         //Uso Docker
-        String url = "http://loteria:8080/sorteos";
+//        String url = "http://loteria:8080/sorteos";
         ResponseEntity<EndpointSorteoDto[]> response = restTemplate.getForEntity(url, EndpointSorteoDto[].class);
         if (response.getBody() != null) {
             return Arrays.asList(response.getBody());

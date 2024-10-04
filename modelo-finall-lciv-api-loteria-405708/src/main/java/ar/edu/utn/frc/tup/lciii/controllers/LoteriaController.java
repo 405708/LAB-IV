@@ -5,7 +5,10 @@ import ar.edu.utn.frc.tup.lciii.dtos.common.SaveApuestaDto;
 import ar.edu.utn.frc.tup.lciii.dtos.common.SorteoBetsDto;
 import ar.edu.utn.frc.tup.lciii.services.ApuestaService;
 import ar.edu.utn.frc.tup.lciii.services.SorteoService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
 
 @RestController
 @RequestMapping("/loteria")
@@ -20,16 +23,20 @@ public class LoteriaController {
     }
 
     @PostMapping("/apuestas")
-    public SaveApuestaDto registrarApuesta(@RequestBody ApuestaDto apuestaDto){
-        return apuestaService.save(apuestaDto);
+    public ResponseEntity<SaveApuestaDto> registrarApuesta(@RequestBody ApuestaDto apuestaDto){
+        SaveApuestaDto result = apuestaService.save(apuestaDto);
+        if(result == null){
+            return ResponseEntity.status(HttpStatus.BAD_GATEWAY).build();
+        }
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/sorteo/{id_sorteo}")
-    public SorteoBetsDto GetSorteoWithApuestas (@PathVariable("id_sorteo") Integer id){
+    public ResponseEntity<SorteoBetsDto> GetSorteoWithApuestas (@PathVariable("id_sorteo") Integer id){
         SorteoBetsDto sorteo = sorteoService.getByIdWithBet(id);
         if(sorteo == null){
-            return null;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        return sorteo;
+        return ResponseEntity.ok(sorteo);
     }
 }

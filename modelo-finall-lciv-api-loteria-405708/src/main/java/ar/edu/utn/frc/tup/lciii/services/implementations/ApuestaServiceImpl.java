@@ -118,12 +118,6 @@ public class ApuestaServiceImpl implements ApuestaService {
         }
         apuestaRepository.save(apuesta);
 
-
-        // mapear el sorteo y guardarlo con su apuesta
-//        sorteoRepository.save(sorteoElegido)
-
-
-
         SaveApuestaDto saved = modelMapper.map(apuesta, SaveApuestaDto.class);
         saved.setId_sorteo(sorteoElegido.getNumeroSorteo());
         return saved;
@@ -132,23 +126,16 @@ public class ApuestaServiceImpl implements ApuestaService {
     @Override
     public EndpointSorteoDto obtenerSorteo(String fecha){
         //        Para el compose
-        String url = "http://loteria:8080/sorteos?fecha=" + fecha;
+//        String url = "http://loteria:8080/sorteos?fecha=" + fecha;
         //Para uso normal
-//        String url = "http://localhost:8082/sorteos?fecha=" + fecha;
+        String url = "http://localhost:8082/sorteos?fecha=" + fecha;
         ResponseEntity<EndpointSorteoDto[]> response = restTemplate.getForEntity(url, EndpointSorteoDto[].class);
 
-        EndpointSorteoDto[] sorteoObtenidos = response.getBody();
-
-        List<EndpointSorteoDto> sorteos = Arrays.stream(sorteoObtenidos).toList();
-
-        EndpointSorteoDto sorteoObtenido = new EndpointSorteoDto();
-
-        if (response.getBody() != null) {
-            sorteoObtenido = sorteos.get(0);
-        } else {
-            System.out.println("Error");
+        if (response == null || response.getBody() == null || response.getBody().length == 0) {
+            throw new RuntimeException("No se pudo obtener el sorteo para la fecha: " + fecha);
         }
-        return sorteoObtenido;
+
+        return response.getBody()[0];
     }
 
     public int contarCoincidencias(Integer numeroSorteado, Integer numeroApuesta) {

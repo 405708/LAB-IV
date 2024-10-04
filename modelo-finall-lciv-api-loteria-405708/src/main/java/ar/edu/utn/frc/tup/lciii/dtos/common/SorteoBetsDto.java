@@ -8,6 +8,6 @@ import java.util.List;
 public class SorteoBetsDto {
     private Integer id_sorteo;
     private String fecha_sorteo;
-    private List<ApuestaSorteoDto>  apuestas;
+    private List<ApuestaSorteoDto> apuestas;
     private Integer totalEnReserva;
 }
