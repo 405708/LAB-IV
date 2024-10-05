@@ -126,9 +126,9 @@ public class ApuestaServiceImpl implements ApuestaService {
     @Override
     public EndpointSorteoDto obtenerSorteo(String fecha){
         //        Para el compose
-//        String url = "http://loteria:8080/sorteos?fecha=" + fecha;
+        String url = "http://loteria:8080/sorteos?fecha=" + fecha;
         //Para uso normal
-        String url = "http://localhost:8082/sorteos?fecha=" + fecha;
+//        String url = "http://localhost:8082/sorteos?fecha=" + fecha;
         ResponseEntity<EndpointSorteoDto[]> response = restTemplate.getForEntity(url, EndpointSorteoDto[].class);
 
         if (response == null || response.getBody() == null || response.getBody().length == 0) {
