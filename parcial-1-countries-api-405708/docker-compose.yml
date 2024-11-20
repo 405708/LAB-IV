@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  country-mvz:
+    build: .
+    image: country-mvz
+    container_name: country-mvz-container
+    ports:
+      - "8085:8085"
