@@ -1,0 +1,106 @@
+[
+  {
+    "id": 1,
+    "nombre": "Capital"
+  },
+  {
+    "id": 2,
+    "nombre": "Calamuchita"
+  },
+  {
+    "id": 3,
+    "nombre": "Colón"
+  },
+  {
+    "id": 4,
+    "nombre": "Cruz del Eje"
+  },
+  {
+    "id": 5,
+    "nombre": "General Roca"
+  },
+  {
+    "id": 6,
+    "nombre": "General San Martín"
+  },
+  {
+    "id": 7,
+    "nombre": "Ischilín"
+  },
+  {
+    "id": 8,
+    "nombre": "Juárez Celman"
+  },
+  {
+    "id": 9,
+    "nombre": "Marcos Juárez"
+  },
+  {
+    "id": 10,
+    "nombre": "Minas"
+  },
+  {
+    "id": 11,
+    "nombre": "Pocho"
+  },
+  {
+    "id": 12,
+    "nombre": "Punilla"
+  },
+  {
+    "id": 13,
+    "nombre": "Río Cuarto"
+  },
+  {
+    "id": 14,
+    "nombre": "Río Primero"
+  },
+  {
+    "id": 15,
+    "nombre": "Río Seco"
+  },
+  {
+    "id": 16,
+    "nombre": "Río Segundo"
+  },
+  {
+    "id": 17,
+    "nombre": "Presidente Roque Sáenz Peña"
+  },
+  {
+    "id": 18,
+    "nombre": "San Alberto"
+  },
+  {
+    "id": 19,
+    "nombre": "San Javier"
+  },
+  {
+    "id": 20,
+    "nombre": "San Justo"
+  },
+  {
+    "id": 21,
+    "nombre": "Santa María"
+  },
+  {
+    "id": 22,
+    "nombre": "Sobremonte"
+  },
+  {
+    "id": 23,
+    "nombre": "Tercero Arriba"
+  },
+  {
+    "id": 24,
+    "nombre": "Totoral"
+  },
+  {
+    "id": 25,
+    "nombre": "Tulumba"
+  },
+  {
+    "id": 26,
+    "nombre": "Unión"
+  }
+]

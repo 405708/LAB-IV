@@ -1,0 +1,66 @@
+{
+  "id": 4,
+  "nombre": "Córdoba",
+  "votantes": 2332112,
+  "secciones": [
+    "Calamuchita","Capital","Colón","Cruz del Eje","General Roca","General San Martín","Ischilín","Juárez Celman","Marcos Juárez","Minas","Pocho","Presidente Roque Sáenz Peña","Punilla","Río Cuarto","Río Primero","Río Seco","Río Segundo","San Alberto","San Javier","San Justo","Santa María","Sobremonte","Tercero Arriba","Totoral","Tulumba","Unión"
+  ],
+  "porcentaje_padron_nacional": 0.0861,
+  "agrupacion_ganadora": "LA LIBERTAD AVANZA",
+  "resultados_agrupaciones": [
+    {
+      "nombre": "LA LIBERTAD AVANZA",
+      "posicion": 1,
+      "votos": 769847,
+      "porcentaje": "33.01 %"
+    },
+    {
+      "nombre": "HACEMOS POR NUESTRO PAIS",
+      "posicion": 2,
+      "votos": 665717,
+      "porcentaje": "28.55 %"
+    },
+    {
+      "nombre": "JUNTOS POR EL CAMBIO",
+      "posicion": 3,
+      "votos": 519252,
+      "porcentaje": "22.27 %"
+    },
+    {
+      "nombre": "UNION POR LA PATRIA",
+      "posicion": 4,
+      "votos": 308016,
+      "porcentaje": "13.21 %"
+    },
+    {
+      "nombre": "FRENTE DE IZQUIERDA Y DE TRABAJADORES - UNIDAD",
+      "posicion": 5,
+      "votos": 31895,
+      "porcentaje": "1.37 %"
+    },
+    {
+      "nombre": "NULO",
+      "posicion": 6,
+      "votos": 18869,
+      "porcentaje": "0.81 %"
+    },
+    {
+      "nombre": "EN BLANCO",
+      "posicion": 7,
+      "votos": 17852,
+      "porcentaje": "0.77 %"
+    },
+    {
+      "nombre": "RECURRIDO",
+      "posicion": 8,
+      "votos": 484,
+      "porcentaje": "0.02 %"
+    },
+    {
+      "nombre": "IMPUGNADO",
+      "posicion": 9,
+      "votos": 180,
+      "porcentaje": "0.01 %"
+    }
+  ]
+}

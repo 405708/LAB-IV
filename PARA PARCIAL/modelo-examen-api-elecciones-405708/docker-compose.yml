@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  elecciones:
+    image: tupfrcutn/elecciones-2023:2.0.0
+    ports:
+      - "8080:8080"
+
+  api-elecciones:
+    image: elecciones-mio
+    container_name: elecciones-mvz
+    build: .
+    ports:
+      - "8081:8081"

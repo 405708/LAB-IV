@@ -1,0 +1,12 @@
+
+Cada Phase tiene un listado de los StartingGrid
+donde cada SG tiene 1 driver y su posicion, y la fase
+
+Cada Phase tiene un listado de los PhaseResultEntity.
+Cada PhaseResult tiene una referencia a 1 driver, su mejor tiempo,
+su numero de vueltas, y la fase
+
+Cada PhaseResult tiene un listado de PhaseResultDetail,
+donde el id es siempre el del mismo piloto,
+y solamente por cada entrada se guarda una referencia
+a cada vuelta y su tiempo individual
